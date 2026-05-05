@@ -1,0 +1,38 @@
+.main-container {
+  background-image: url(https://user-images.githubusercontent.com/13468728/233847739-219cb494-c265-4554-820a-bd3424c59065.jpg);
+  border-color: white;
+  color: white;
+
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.container {
+  font-family: 'Poppins', sans-serif;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+
+}
+
+.input-fields {
+  border: none;
+  border-bottom: 2px solid white;
+  border-radius: 0;
+  padding-left: 0px;
+  background: transparent;
+  color: white;
+}
+
+.input-fields:hover {
+  border-bottom: 2px solid red;
+}
+
+.error {
+  font-size: 10px;
+  color: white;
+  position: absolute;
+}
+
+.input-error {
+  position: relative;
+}

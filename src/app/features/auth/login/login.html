@@ -1,0 +1,120 @@
+<p-toast />
+<div class="main-container flex justify-center items-center h-dvh">
+  <div class="container shadow-xl/30 border border-white w-80 sm:w-105 rounded-xl px-15 py-10">
+    <form [formGroup]="loginScreen() ? loginForm : registerForm" (ngSubmit)="saveUserForm($event)">
+      <div class="card-container">
+        <h1 class="text-3xl text-center font-bold">{{loginScreen() ? 'login' : 'Register'}}</h1>
+
+        <div class="pt-8">
+
+          <label for="">Email</label>
+          <div class="relative">
+            <input class="w-full input-fields pl-0" pInputText type="text" placeholder="" autocomplete="new-password"
+              formControlName="email" />
+            @if(loginScreen()){
+            @if(loginForm.controls['email'].touched && loginForm.controls['email'].invalid){
+            <div class="error">
+              <p>Invalid Email id</p>
+            </div>
+            }}@else {
+            @if(registerForm.controls['email'].touched && registerForm.controls['email'].invalid){
+            <div class="error">
+              <p>Invalid Email id</p>
+            </div>
+            }
+            }
+
+          </div>
+
+          <div class="pt-6">
+            <label for="">Password</label>
+            <div class="relative">
+              <input class="w-full input-fields pl-0 " pInputText [type]="hidePassword() ? 'password': 'text'"
+                placeholder="" autocomplete="new-password" formControlName="password" />
+
+              <span class="absolute top-2.5 right-1" (click)="changePasswordIcon()">
+                @if(hidePassword()){
+                <i class="pi pi-eye cursor-pointer "></i>
+                }
+                @else{
+                <i class="pi pi-eye-slash cursor-pointer "></i>
+                }
+              </span>
+
+              @if(loginScreen()){
+              @if(loginForm.controls['password'].touched && loginForm.controls['password'].invalid){
+              <div class="error">
+                <p>Invalid password</p>
+              </div>
+              }}
+              @else {
+              @if(registerForm.controls['password'].touched && registerForm.controls['password'].invalid){
+              <div class="error">
+                <p>Invalid password</p>
+              </div>
+              }
+              }
+            </div>
+
+          </div>
+
+          @if(!loginScreen()){
+          <div class="pt-6">
+            <label for="">Confirm Password</label>
+            <div class="relative">
+              <input class="w-full input-fields pl-0 " pInputText [type]="hideConfPassword() ? 'password': 'text'"
+                placeholder="" autocomplete="new-password" formControlName="confirmpassword" />
+
+              <span class="absolute right-1 top-2.5" (click)="changeConfirmPasswordIcon()">
+                @if(hidePassword()){
+                <i class="pi pi-eye cursor-pointer "></i>
+                }
+                @else{
+                <i class="pi pi-eye-slash cursor-pointer "></i>
+                }
+              </span>
+
+              @if(registerForm.controls['confirmpassword'].touched && registerForm.controls['confirmpassword'].invalid){
+              <div class="error">
+                <p>Invalid password</p>
+              </div>
+              }
+            </div>
+
+          </div>
+          }
+
+        </div>
+
+        @if(loginScreen()){
+
+        <div class="flex justify-between py-8">
+          <div class="flex items-center gap-1">
+            <p-checkbox [binary]="true" />
+            Remember Me
+          </div>
+          <div class="cursor-pointer">
+            Forgot Password
+          </div>
+        </div>
+        }
+
+        <div [class]="loginScreen() ? 'pt-3' : 'pt-7 pb-2'">
+
+          <button class="bg-olive-50 text-black w-full rounded-full p-2 cursor-pointer" type="submit"><b>{{loginScreen()
+              ?
+              'log in' :
+              'Create an account'}}</b></button>
+        </div>
+
+        <div class="pt-5">
+          @if(loginScreen()){
+          <span>Don't </span>
+          } have an account <b><a class="cursor-pointer underline" (click)="registerAccount()">{{loginScreen() ?
+              'Register' :
+              'Log in'}}</a></b>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
