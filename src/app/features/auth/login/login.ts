@@ -1,12 +1,13 @@
-import { Component, Inject, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { CheckboxModule } from 'primeng/checkbox';
 import { Router } from '@angular/router';
-import { LoginService } from '../../../core/services/login-service';
-import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { CardModule } from 'primeng/card';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { LoginService } from '../../../core/services/login-service';
+import { confirmPasswordValidator, customEmailValidator } from '../../../shared/custom-validators/validators';
 
 @Component({
   selector: 'app-login',
@@ -34,14 +35,16 @@ export class Login {
   ngOnInit(): void {
     localStorage.removeItem("token");
     this.loginForm = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, customEmailValidator]],
       password: ['', Validators.required],
     });
 
     this.registerForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmpassword: ['', Validators.required]
+      email: ['', [Validators.required, customEmailValidator]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmpassword: ['', [Validators.required]]
+    }, {
+      validators: confirmPasswordValidator
     });
   }
 
@@ -72,7 +75,7 @@ export class Login {
 
           }
         });
-      }
+      } else this.loginForm.markAllAsTouched()
     }
     else {
       console.log(this.registerForm.value);
@@ -103,7 +106,7 @@ export class Login {
 
           }
         });
-      }
+      } else this.registerForm.markAllAsTouched();
     }
 
 

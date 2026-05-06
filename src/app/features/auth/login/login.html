@@ -12,12 +12,14 @@
             <input class="w-full input-fields pl-0" pInputText type="text" placeholder="" autocomplete="new-password"
               formControlName="email" />
             @if(loginScreen()){
-            @if(loginForm.controls['email'].touched && loginForm.controls['email'].invalid){
+            @if((loginForm.controls['email'].touched && loginForm.controls['email'].invalid) ||
+            loginForm.controls['email'].errors?.['invaliEmail']){
             <div class="error">
               <p>Invalid Email id</p>
             </div>
             }}@else {
-            @if(registerForm.controls['email'].touched && registerForm.controls['email'].invalid){
+            @if((registerForm.controls['email'].touched && registerForm.controls['email'].invalid) ||
+            (registerForm.controls['email'].errors?.['invalidEmail'])){
             <div class="error">
               <p>Invalid Email id</p>
             </div>
@@ -42,17 +44,29 @@
               </span>
 
               @if(loginScreen()){
-              @if(loginForm.controls['password'].touched && loginForm.controls['password'].invalid){
-              <div class="error">
-                <p>Invalid password</p>
-              </div>
-              }}
-              @else {
-              @if(registerForm.controls['password'].touched && registerForm.controls['password'].invalid){
+              @if(loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['required']){
               <div class="error">
                 <p>Invalid password</p>
               </div>
               }
+              }
+              @else {
+              @if(registerForm.controls['password'].touched && registerForm.controls['password'].errors?.['required']){
+              <div class="error">
+                <p>Invalid password</p>
+              </div>
+              }
+
+              @if(registerForm.controls['password'].errors?.['minlength']){
+              <div class="error">
+                <p>password length should be grater then 8 char</p>
+              </div>
+              }
+
+
+
+
+
               }
             </div>
 
@@ -66,7 +80,7 @@
                 placeholder="" autocomplete="new-password" formControlName="confirmpassword" />
 
               <span class="absolute right-1 top-2.5" (click)="changeConfirmPasswordIcon()">
-                @if(hidePassword()){
+                @if(hideConfPassword()){
                 <i class="pi pi-eye cursor-pointer "></i>
                 }
                 @else{
@@ -79,6 +93,13 @@
                 <p>Invalid password</p>
               </div>
               }
+
+              @if(registerForm.errors?.['invalidPass']){
+              <div class="error">
+                <p>password does not match</p>
+              </div>
+              }
+
             </div>
 
           </div>
