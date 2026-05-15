@@ -1,14 +1,14 @@
-<div class="h-dvh card flex justify-center items-center bg-blue-100 oerflow-vivible">
-  <p-card class="w-300 min-h-100">
+<div class="p-8">
+  <p-card>
     <p-table stripedRows [value]="updateStudentList()" [scrollable]="true" scrollHeight="450px" [paginator]="true"
-      [rows]="pageSize()" [tableStyle]="{ 'min-width': '50rem'}" [rowsPerPageOptions]="[5, 10, 20]"
-      (onPage)="pageUpdated($event)" [lazy]="true" [totalRecords]="totalRecord()">
+      [rows]="pageSize()" [rowsPerPageOptions]="[5, 10, 20]" (onPage)="pageUpdated($event)" [lazy]="true"
+      [totalRecords]="totalRecord()">
       <ng-template #caption>
-        <div class="flex ">
+        <div class="flex flex-wrap">
           <div class="text-3xl font-bold">
             Student Details List <span class="text-purple-500">CRUD</span> Operations
           </div>
-          <div class="ml-4">
+          <div class="max-md:mt-2 md:ml-4">
             <p-button outlined="true" iconPos="right" icon="pi pi-users" severity="help" label="Add User"></p-button>
           </div>
         </div>
