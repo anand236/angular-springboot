@@ -6,7 +6,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    alert('sorry')
+    alert('Invalid URL please login')
     router.navigate(['/login']);
     return false;
   }

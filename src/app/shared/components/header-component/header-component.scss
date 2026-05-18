@@ -1,0 +1,129 @@
+.nav-wrapper {
+  background: linear-gradient(90deg, #7c3aed 0%, #db2777 55%, #f97316 100%);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  height: 52px;
+  gap: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-right: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  a {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover:not(.active) {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 16px;
+}
+
+.new-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 0.5px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-size: 12.5px;
+  padding: 5px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+// ================practise
+
+.aurora-wrapper {
+  background: linear-gradient(90deg, #7c3aed 0%, #db2777 55%, #f97316 100%);
+  display: flex;
+  padding: 0px 20px;
+  align-items: center;
+  height: 52px;
+}
+
+.aurora-logo {
+  font-weight: 700;
+  margin-right: auto;
+  color: white;
+}
+
+.aurora-container {
+  display: flex;
+  align-items: center;
+}
+
+.aurora-item {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.aurora-item:hover {
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+}
+
+.aurora-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.newbtn {
+  color: white;
+  font-size: 13px;
+  padding: 5px 14px;
+  border: 0.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+}

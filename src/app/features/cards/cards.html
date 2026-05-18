@@ -1,0 +1,10 @@
+@for(item of cardsItems(); track item.route){
+<div
+  class="card bg-red-100 w-60 h-40 rounded-md flex items-center cursor-pointer overflow-hidden justify-center crud-card"
+  routerLink="{{item.route}}">
+  <div class="content flex justify-center items-center ">
+    {{item.operation}}
+  </div>
+</div>
+
+}

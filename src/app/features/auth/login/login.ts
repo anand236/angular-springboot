@@ -59,7 +59,7 @@ export class Login {
 
                 this.toastSer.add({ severity: 'success', summary: 'Success', detail: 'login successfull' });
                 localStorage.setItem("token", res.token);
-                this.router.navigate(['/student'])
+                this.router.navigate(['/dashboard'])
                 break;
               case "wrong credential":
                 this.toastSer.add({ severity: 'warn', summary: 'Sorry!', detail: 'wrong credential' });
